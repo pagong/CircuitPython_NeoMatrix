@@ -9,6 +9,8 @@ files with a 32 in the name should be used for tiled 32x32 matrices.
 
 ``` bash
 examples/
+├── berlin              # "Berlin-Uhr": digital clock with a twist
+│   └── berlin16.py
 ├── bounce              # bouncing lines and random walks
 │   ├── bounce32.py
 │   ├── lines16.py

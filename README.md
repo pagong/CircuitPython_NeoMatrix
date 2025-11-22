@@ -61,6 +61,7 @@ files with a 32 in the name should be used for tiled 32x32 matrices.
 
 ``` bash
 examples/
+├── berlin          # "Berlin-Uhr"
 ├── bounce          # bouncing lines and random walks
 ├── rainbow         # spiraling rainbows
 ├── life            # Tim C's Game of Life animation
