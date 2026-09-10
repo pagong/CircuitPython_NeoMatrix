@@ -77,11 +77,11 @@ LIME    = 0x70C000
 ORANGE  = 0xC07000
 BLACK   = 0x000000
 GREY    = 0x171717
+BLUE    = 0x0000FF
 
 # unused colors
 WHITE   = 0xFFFFFF
 GREEN   = 0x00FF00
-BLUE    = 0x0000FF
 CYAN    = 0x00C0C0
 MAGENTA = 0xC000C0
 
@@ -99,7 +99,7 @@ e = 1
 
 # Four 6x4 rects for hour*5
 x = xoff
-y = yoff+b
+y = yoff+2*b
 hour5 = [ (x, y, c, d),
           (x+b+c, y, c, d),
           (x+2*b+2*c, y, c, d),
@@ -107,7 +107,7 @@ hour5 = [ (x, y, c, d),
 
 # Four 6x4 rects for hour*1
 x = xoff
-y = yoff+2*b+d
+y = yoff+3*b+d
 hour1 = [ (x, y, c, d),
           (x+b+c, y, c, d),
           (x+2*b+2*c, y, c, d),
@@ -115,7 +115,7 @@ hour1 = [ (x, y, c, d),
 
 # Eleven 2x4 rects for minutes*5
 x = 0
-y = yoff+3*b+2*d
+y = yoff+3*b+2*d+b+e
 minute5 = [ (x, y, a, d),
             (x+a+e, y, a, d),
             (x+2*a+2*e, y, a, d),
@@ -130,7 +130,7 @@ minute5 = [ (x, y, a, d),
 
 # Four 6x4 rects for minutes*1
 x = xoff
-y = yoff+4*b+3*d
+y = yoff+4*b+3*d+b+e
 minute1 = [ (x, y, c, d),
             (x+b+c, y, c, d),
             (x+2*b+2*c, y, c, d),
@@ -168,18 +168,19 @@ def Draw_minutes(grid, minute):
         grid.fill_rect(rect[0], rect[1], rect[2], rect[3], color)
 
 
-def Draw_second(grid, second, color):
+def Draw_seconds(grid, second, color):
     # blink the circle at the top
-    x = 15 ; y = 0 ; l = 2
+    x = 15 ; y = 1 ; l = 2
     grid.hline(x,   y,   l,   color)
     grid.hline(x-1, y+1, l+2, color)
     grid.hline(x-2, y+2, l+4, color)
     grid.hline(x-2, y+3, l+4, color)
     grid.hline(x-1, y+4, l+2, color)
     grid.hline(x,   y+5, l,   color)
-    # show a bar at the bottom
+    # show a bar in the middle
     barlen = 1 + second // 2
-    grid.hline(1, 31, barlen, BLUE)
+    y = yoff+3*b+2*d+e
+    grid.hline(1, y, barlen, BLUE)
     
 #######################################
 
@@ -207,7 +208,7 @@ while True:
         last_sec = second
         # blink second mark
         color = LIME if (second & 1) else GREY
-        Draw_second(matrix, second, color)
+        Draw_seconds(matrix, second, color)
 
         # show the matrix
         matrix.display()
