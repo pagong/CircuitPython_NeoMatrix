@@ -14,8 +14,9 @@ pixel_pin = board.IO1
 # Update to match the number of NeoPixels you have connected
 pixel_num = 1024
 
+BRIGHT=0.05
 # initialize the neopixels. Change out for dotstars if needed.
-pixels = neopixel.NeoPixel(pixel_pin, pixel_num, brightness=0.02, auto_write=False)
+pixels = neopixel.NeoPixel(pixel_pin, pixel_num, brightness=BRIGHT, auto_write=False)
 
 ####
 

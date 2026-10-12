@@ -32,7 +32,7 @@ NEO_PIN = board.IO1
 # NEO_PIN is for Pico-W
 #NEO_PIN = board.GP28
 
-matrix = MatrixSetup(NEO_PIN, "vstripes", 0.1)
+matrix = MatrixSetup(NEO_PIN, "vstripes", BRIGHTNESS)
 
 #######################################
 
